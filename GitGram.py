@@ -3,6 +3,7 @@
 from logging import basicConfig, getLogger, INFO
 from flask import Flask, request, jsonify
 from html import escape
+from markupsafe import escape
 from requests import get, post
 from os import environ
 import config
