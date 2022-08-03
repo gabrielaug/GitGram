@@ -2,10 +2,11 @@
 
 from logging import basicConfig, getLogger, INFO
 from flask import Flask, request, jsonify
+from html import escape
 from requests import get, post
 from os import environ
 import config
-from markupsafe import escape
+
 from telegram.ext import CommandHandler, Updater
 
 server = Flask(__name__)
