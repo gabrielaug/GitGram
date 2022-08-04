@@ -2,4 +2,5 @@ Flask==1.1.2
 Jinja2<3.1.0
 requests==2.24.0
 python-telegram-bot==11.1.0
+itsdangerous==2.0.1
 
