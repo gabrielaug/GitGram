@@ -160,8 +160,8 @@ def git_api(groupid):
             if len(escape(commit['message'])) > 300:
                 commit_msg = escape(commit['message']).split("\n")[0]
             else:
-                commit_msg = f" \n Titulo: <b>{escape(commit['message'])} </b>"
-            commits_text += f"Descrição: {commit_msg} \n\n <a href='{commit['url']}'>Ver Commit: {commit['id'][:7]}</a> \n Autor: {commit['author']['name']} \n E-mail: {commit['author']['email']}\n\n"
+                commit_msg = f" \n\n Titulo: <b>{escape(commit['message'])} </b> \n\n Descrição:"
+            commits_text += f"{commit_msg} \n\n <a href='{commit['url']}'>Ver Commit: {commit['id'][:7]}</a> \n Autor: {commit['author']['name']} \n E-mail: {commit['author']['email']}\n\n"
             if len(commits_text) > 1000:
                 text = f"""✨ <b>Novo Commit</b> \n\n <b>Repositório:</b> {escape(data['repository']['name'])} \n <b>Qtd. Commit:</b> {len(data['commits'])} \n <b>Branch:</b> {escape(data['ref'].split('/')[-1])}
 {commits_text}
