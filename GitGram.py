@@ -160,17 +160,17 @@ def git_api(groupid):
             if len(escape(commit['message'])) > 300:
                 commit_msg = escape(commit['message']).split("\n")[0]
             else:
-                commit_msg = f"<b> {escape(commit['message'])} </b>"
+                commit_msg = f" \n <b>{escape(commit['message'])} </b>"
             commits_text += f"{commit_msg}\n\n<a href='{commit['url']}'>{commit['id'][:7]}</a> - {commit['author']['name']} {escape('<')}{commit['author']['email']}{escape('>')}\n\n"
             if len(commits_text) > 1000:
-                text = f"""✨ <b>Novo Commit</b> \n <b>Repositório:</b> {escape(data['repository']['name'])} \n <b>Qtd. Commit:</b> {len(data['commits'])} \n  <b>Branch:</b> {escape(data['ref'].split('/')[-1])}
+                text = f"""✨ <b>Novo Commit</b> \n <b>Repositório:</b> {escape(data['repository']['name'])} \n <b>Qtd. Commit:</b> {len(data['commits'])} \n <b>Branch:</b> {escape(data['ref'].split('/')[-1])}
 {commits_text}
 """
                 response = post_tg(groupid, text, "html")
                 commits_text = ""
         if not commits_text:
             return jsonify({"ok": True, "text": "Commits text is none"})
-        text = f"""✨ <b>Novo Commit</b> \n <b>Repositório:</b> {escape(data['repository']['name'])} \n <b>Qtd. Commit:</b> {len(data['commits'])} \n  <b>Branch:</b> {escape(data['ref'].split('/')[-1])}
+        text = f"""✨ <b>Novo Commit</b> \n <b>Repositório:</b> {escape(data['repository']['name'])} \n <b>Qtd. Commit:</b> {len(data['commits'])} \n <b>Branch:</b> {escape(data['ref'].split('/')[-1])}
 {commits_text}
 """
         if len(data['commits']) > 10:
