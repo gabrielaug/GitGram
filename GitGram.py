@@ -161,7 +161,7 @@ def git_api(groupid):
                 commit_msg = escape(commit['message']).split("\n")[0]
             else:
                 commit_msg = f" \n <b>{escape(commit['message'])} </b>"
-            commits_text += f"{commit_msg}\n\n<a href='{commit['url']}'>{commit['id'][:7]}</a> - {commit['author']['name']} {escape('<')}{commit['author']['email']}{escape('>')}\n\n"
+            commits_text += f"{commit_msg}\n\n<a href='{commit['url']}'>Visualizar Commit: {commit['id'][:7]}</a> - {commit['author']['name']} {escape('<')}{commit['author']['email']}{escape('>')}\n\n"
             if len(commits_text) > 1000:
                 text = f"""✨ <b>Novo Commit</b> \n <b>Repositório:</b> {escape(data['repository']['name'])} \n <b>Qtd. Commit:</b> {len(data['commits'])} \n <b>Branch:</b> {escape(data['ref'].split('/')[-1])}
 {commits_text}
